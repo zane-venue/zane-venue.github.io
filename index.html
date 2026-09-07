@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>女性美学生活方式品牌平台 · 会员体系展示</title>
+<style>
+  :root {
+    --bg: #FAF7F2;
+    --panel: #FFFFFF;
+    --line: #E8E0D4;
+    --ink: #3B2F2F;
+    --sub: #6B5E52;
+    --accent: #C4755E;
+    --wood: #DCCBB8;
+    --moss: #8FA99A;
+    --soft-green: #E8F0EC;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 680px; margin: 0 auto; padding: 20px; }
+
+  .header {
+    text-align: center;
+    padding: 40px 20px 30px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 30px;
+  }
+  .header .tag {
+    display: inline-block;
+    background: var(--soft-green);
+    color: var(--moss);
+    font-size: 12px;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+    letter-spacing: 1px;
+  }
+  .header h1 {
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+  .header .slogan {
+    font-size: 15px;
+    color: var(--sub);
+    font-style: italic;
+  }
+
+  .card {
+    background: var(--panel);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px rgba(59,47,47,0.06);
+    border: 1px solid var(--line);
+  }
+  .card h2 {
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .identity {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .avatar {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: var(--wood);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px; color: var(--sub);
+    flex-shrink: 0;
+  }
+  .identity-info h3 { font-size: 18px; font-weight: 500; margin-bottom: 4px; }
+  .identity-info .meta { font-size: 13px; color: var(--sub); }
+  .identity-info .meta span { margin-right: 12px; }
+  .value-bar {
+    background: var(--line);
+    border-radius: 10px;
+    height: 8px;
+    margin-top: 8px;
+    overflow: hidden;
+  }
+  .value-bar .fill {
+    background: var(--accent);
+    height: 100%;
+    border-radius: 10px;
+    width: 64%;
+  }
+
+  .benefit-category { margin-bottom: 18px; }
+  .benefit-category h3 {
+    font-size: 14px;
+    color: var(--sub);
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+  }
+  .benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 0;
+    font-size: 14px;
+  }
+  .benefit-item .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .dot.open { background: var(--moss); }
+  .dot.pending { background: var(--line); }
+  .benefit-item .label { flex: 1; }
+  .benefit-item .status {
+    font-size: 12px;
+    color: var(--sub);
+  }
+
+  .activity-item {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .activity-item:last-child { border-bottom: none; }
+  .activity-item .title { font-size: 15px; font-weight: 500; margin-bottom: 4px; }
+  .activity-item .desc { font-size: 13px; color: var(--sub); margin-bottom: 8px; }
+  .btn {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .consume-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 14px;
+  }
+  .consume-row:last-child { border-bottom: none; }
+  .consume-row .channel {
+    font-size: 12px;
+    color: var(--sub);
+    background: var(--soft-green);
+    padding: 2px 8px;
+    border-radius: 10px;
+  }
+
+  .plan-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .plan-card {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 18px 14px;
+    text-align: center;
+  }
+  .plan-card.featured {
+    border-color: var(--accent);
+    box-shadow: 0 4px 16px rgba(196,117,94,0.12);
+  }
+  .plan-card .plan-name {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+  .plan-card .plan-price {
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .plan-card .plan-period {
+    font-size: 12px;
+    color: var(--sub);
+    margin-bottom: 12px;
+  }
+  .plan-card ul {
+    list-style: none;
+    text-align: left;
+    font-size: 12px;
+    color: var(--sub);
+  }
+  .plan-card ul li {
+    padding: 3px 0;
+    padding-left: 16px;
+    position: relative;
+  }
+  .plan-card ul li::before {
+    content: "●";
+    position: absolute;
+    left: 0;
+    color: var(--moss);
+    font-size: 8px;
+    top: 6px;
+  }
+
+  .hero {
+    text-align: center;
+    padding: 60px 20px 40px;
+  }
+  .hero h2 {
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  .hero .sub {
+    font-size: 15px;
+    color: var(--sub);
+    margin-bottom: 24px;
+  }
+  .hero .cta {
+    display: inline-block;
+    padding: 10px 28px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 24px;
+    font-size: 14px;
+    text-decoration: none;
+  }
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .product-card {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+  }
+  .product-card .img-placeholder {
+    width: 100%;
+    aspect-ratio: 1;
+    background: var(--wood);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--sub);
+    font-size: 13px;
+  }
+  .product-card .name { font-size: 14px; margin-bottom: 4px; }
+  .product-card .price { font-size: 13px; color: var(--accent); }
+
+  .contact-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    font-size: 14px;
+    border-bottom: 1px solid var(--line);
+  }
+  .contact-row:last-child { border-bottom: none; }
+  .contact-row .icon {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--soft-green);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 14px;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 30px 0 40px;
+    font-size: 12px;
+    color: var(--sub);
+    border-top: 1px solid var(--line);
+    margin-top: 30px;
+  }
+
+  @media (max-width: 480px) {
+    .container { padding: 14px; }
+    .plan-grid { grid-template-columns: 1fr; }
+    .product-grid { grid-template-columns: 1fr; }
+    .header h1 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="tag">会员体系展示品</div>
+    <h1>不追逐年龄</h1>
+    <div class="slogan">让每一个年龄都拥有自己的美</div>
+  </div>
+
+  <div class="card">
+    <h2>📱 小程序 · 会员端</h2>
+
+    <div class="identity">
+      <div class="avatar">张</div>
+      <div class="identity-info">
+        <h3>张女士</h3>
+        <div class="meta">
+          <span>银卡会员</span>
+          <span>Brand M-20260001</span>
+        </div>
+        <div style="font-size:13px; margin-top:4px;">
+          美学值 <strong>1,280</strong> · 距金卡差 720
+        </div>
+        <div class="value-bar"><div class="fill"></div></div>
+        <div style="font-size:12px; color:var(--sub); margin-top:4px;">
+          付费套餐：尊享年度（还剩 8 个月）
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🎁 我的权益</h2>
+
+    <div class="benefit-category">
+      <h3>消费权益</h3>
+      <div class="benefit-item">
+        <div class="dot pending"></div>
+        <span class="label">专属会员价</span>
+        <span class="status">即将解锁</span>
+      </div>
+      <div class="benefit-item">
+        <div class="dot pending"></div>
+        <span class="label">新品优先体验</span>
+        <span class="status">即将解锁</span>
+      </div>
+      <div class="benefit-item">
+        <div class="dot open"></div>
+        <span class="label">限定款优先选购</span>
+        <span class="status">已开放</span>
+      </div>
+    </div>
+
+    <div class="benefit-category">
+      <h3>服务权益</h3>
+      <div class="benefit-item">
+        <div class="dot open"></div>
+        <span class="label">免费形象咨询预约</span>
+        <span class="status">已开放</span>
+      </div>
+      <div class="benefit-item">
+        <div class="dot pending"></div>
+        <span class="label">美学设计院专属特权</span>
+        <span class="status">即将解锁</span>
+      </div>
+      <div class="benefit-item">
+        <div class="dot pending"></div>
+        <span class="label">全国门店通用售后</span>
+        <span class="status">即将解锁</span>
+      </div>
+      <div class="benefit-item">
+        <div class="dot pending"></div>
+        <span class="label">一对一专属顾问</span>
+        <span class="status">需升级</span>
+      </div>
+    </div>
+
+    <div class="benefit-category">
+      <h3>社交权益</h3>
+      <div class="benefit-item">
+        <div class="dot pending"></div>
+        <span class="label">私享沙龙</span>
+        <span class="status">即将解锁</span>
+      </div>
+      <div class="benefit-item">
+        <div class="dot pending"></div>
+        <span class="label">花艺旅拍</span>
+        <span class="status">即将解锁</span>
+      </div>
+      <div class="benefit-item">
+        <div class="dot pending"></div>
+        <span class="label">女性成长课堂</span>
+        <span class="status">即将解锁</span>
+      </div>
+      <div class="benefit-item">
+        <div class="dot pending"></div>
+        <span class="label">专属生日私享活动</span>
+        <span class="status">需升级</span>
+      </div>
+    </div>
+
+    <div class="benefit-category">
+      <h3>情感权益</h3>
+      <div class="benefit-item">
+        <div class="dot pending"></div>
+        <span class="label">专属定制礼遇</span>
+        <span class="status">需升级</span>
+      </div>
+      <div class="benefit-item">
+        <div class="dot pending"></div>
+        <span class="label">节日专属福利</span>
+        <span class="status">需升级</span>
+      </div>
+      <div class="benefit-item">
+        <div class="dot pending"></div>
+        <span class="label">品牌限定周边</span>
+        <span class="status">需升级</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>✨ 活动入口</h2>
+    <div class="activity-item">
+      <div class="title">🎊 本周沙龙：春季穿搭私享会</div>
+      <div class="desc">3月15日 · 限12人 · 已有8人</div>
+      <button class="btn">立即报名</button>
+    </div>
+    <div class="activity-item">
+      <div class="title">🎂 生日礼遇：3月专属定制礼遇</div>
+      <div class="desc">到账 200 美学值 + 限定周边</div>
+      <button class="btn">查看详情</button>
+    </div>
+    <div class="activity-item">
+      <div class="title">✨ 新品首发：初夏棉麻系列</div>
+      <div class="desc">优先选购权已开放</div>
+      <button class="btn">立即选购</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>📋 我的消费</h2>
+    <div class="consume-row">
+      <span>03/01 · 门店</span>
+      <span>棉麻连衣裙 <strong>¥399</strong></span>
+    </div>
+    <div class="consume-row">
+      <span>02/20 · 线上</span>
+      <span>基础T恤 <strong>¥129</strong></span>
+    </div>
+    <div class="consume-row">
+      <span>02/10 · 设计院</span>
+      <span>形象咨询 <strong>¥280</strong></span>
+    </div>
+    <div style="margin-top:14px; padding-top:14px; border-top:1px solid var(--line);">
+      <div style="font-size:14px; margin-bottom:6px;">📊 美学值获取</div>
+      <div style="font-size:13px; color:var(--sub);">消费 +100 &nbsp; 沙龙参与 +50 &nbsp; 推荐好友 +30 &nbsp; 生日 +20</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>💎 付费年度会员套餐</h2>
+    <div class="plan-grid">
+      <div class="plan-card">
+        <div class="plan-name">精致版</div>
+        <div class="plan-price">¥1,288</div>
+        <div class="plan-period">/年</div>
+        <ul>
+          <li>消费权益</li>
+          <li>基础服务权益</li>
+          <li>公开沙龙参与</li>
+        </ul>
+      </div>
+      <div class="plan-card featured">
+        <div class="plan-name">尊享版</div>
+        <div class="plan-price">¥2,888</div>
+        <div class="plan-period">/年</div>
+        <ul>
+          <li>消费权益</li>
+          <li>全服务权益</li>
+          <li>私享沙龙</li>
+          <li>定制生日礼遇</li>
+        </ul>
+      </div>
+      <div class="plan-card">
+        <div class="plan-name">至臻版</div>
+        <div class="plan-price">¥4,888</div>
+        <div class="plan-period">/年</div>
+        <ul>
+          <li>消费权益</li>
+          <li>全服务权益</li>
+          <li>私享沙龙</li>
+          <li>一年美学管家</li>
+          <li>专属定制货品</li>
+        </ul>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:16px;">
+      <button class="btn">立即升级</button>
+      <button class="btn" style="margin-left:8px;">比较详情</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🌐 网站 · 公众端</h2>
+
+    <div class="hero">
+      <h2>不追逐年龄</h2>
+      <div class="sub">让每一个年龄都拥有自己的美</div>
+      <a href="#" class="cta">成为会员</a>
+    </div>
+
+    <div style="margin-top:24px;">
+      <div class="benefit-category">
+        <h3>商品系列</h3>
+        <div class="product-grid">
+          <div class="product-card">
+            <div class="img-placeholder">基础刚需</div>
+            <div class="name">T恤 / 衬衫 / 半裙</div>
+            <div class="price">¥99 起</div>
+          </div>
+          <div class="product-card">
+            <div class="img-placeholder">核心主打</div>
+            <div class="name">棉麻连衣裙</div>
+            <div class="price">¥299 起</div>
+          </div>
+          <div class="product-card">
+            <div class="img-placeholder">搭配配饰</div>
+            <div class="name">围巾 / 帽子 / 鞋履</div>
+            <div class="price">¥59 起</div>
+          </div>
+          <div class="product-card">
+            <div class="img-placeholder">生活延伸</div>
+            <div class="name">家居 / 香氛 / 文创</div>
+            <div class="price">¥89 起</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:24px;">
+      <h3 style="font-size:14px; color:var(--sub); margin-bottom:10px;">联系我们</h3>
+      <div class="contact-row">
+        <div class="icon">📞</div>
+        <span>XXX</span>
+      </div>
+      <div class="contact-row">
+        <div class="icon">📞</div>
+        <span>XXX</span>
+      </div>
+      <div class="contact-row">
+        <div class="icon">📞</div>
+        <span>XXX</span>
+      </div>
+      <div class="contact-row">
+        <div class="icon">📞</div>
+        <span>XXX</span>
+      </div>
+      <div class="contact-row">
+        <div class="icon">📞</div>
+        <span>XXX</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    展示品仅供探讨 · 业务结构确认前不作为实现依据<br>
+    付费套餐价格为虚拟预估，实际定价需根据样板店数据调整<br>
+    对外展示遵循含蓄谦默原则，不指对方痛点
+  </div>
+
+</div>
+</body>
+</html>
